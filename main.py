@@ -1,5 +1,9 @@
 import streamlit as st 
 import pyshorteners as pyst
+import pyperclip
+
+def copying():
+    pyperclip.copy(short_url)
 
 shortner = pyst.Shortener()
 
@@ -11,4 +15,6 @@ s_btn = form.form_submit_button("Submit")
 
 if s_btn:
     short_url = shortner.tinyurl.short(url)
-    st.markdown(f"<h6 style='text-align: center;'>{short_url}</h6>", unsafe_allow_html=True)
+    st.title("SHORTED URL")
+    st.markdown(f"<h6>{short_url}</h6>", unsafe_allow_html=True)
+    st.button("Copy", on_click=copying)
